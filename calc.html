@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="calc_style.css"> 
+    <script src="./calc.js"></script>
+    <title>Calculator</title> 
+</head>
+<body>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <div class="container">  
+        <div class="reset">
+            <button type="reset" onclick="resetAll()">Сбросить все значения</button>
+        </div>
+
+        <div class="calc-grid"> 
+
+            <div class="base-info-name">
+                Кол-во
+            </div>
+            <div class="base-info-pick">
+                    <div class="pick-elem">
+                            <span>Кол-во изделий:    </span>
+                            <input type="number" min="1" max="30" pattern="[0-9]+" title="Только целые числа от 1 до 30"  id="items-amount" oninput="calculateGlassGoods()">  
+                    </div>  
+            </div>
+            <div class="size-name">
+                Размер
+            </div>
+            <div class="size-pick">
+                <div class="pick-elem">
+                        <span>Высота, мм:    </span>
+                        <input type="text" pattern="[0-9.,]+" title="Только числа" id="size-length-box" oninput="calculateGlassGoods()"> 
+                </div>
+                <div class="pick-elem">
+                        <span>Длина (дуги), мм: </span>
+                        <input type="text" pattern="[0-9.,]+" title="Только числа" id="size-width-box" oninput="calculateGlassGoods()">
+                </div>
+            </div>
+
+            <div class="thickness-name">
+                Толщина
+            </div>
+            <div class="thickness-pick">
+                    <div class="pick-elem"> 
+                        
+                            <span>Толщина стекла: </span>
+                            <select name="thickness" id="thickness-select-box" onchange="calculateGlassGoods()">
+                                    <option value="2">2мм</option>
+                                    <option value="3">3мм</option>
+                                    <option value="4">4мм</option>
+                                    <option value="5">5мм</option>
+                                    <option value="6">6мм</option>
+                                    <option value="8">8мм</option>
+                                    <option value="10">10мм</option>
+                                    <option value="12">12мм</option>
+                                    <option value="15">15мм</option>
+                                    <option value="19">19мм</option>
+                            </select> 
+                    </div> 
+                    <div class="pick-elem"> 
+                        <span>Вид стекла: </span>
+                            <select name="glass-type" id="glass-type-select-box" onchange="calculateGlassGoods()">
+                                    <option value="glass-type-m1">М1</option>
+                                    <option value="glass-type-sa">Сатинато</option>
+                                    <option value="glass-type-br">Бронза</option>
+                                    <option value="glass-type-ow">Оптивайт</option>
+                                    <option value="glass-type-bs">Бронза сатинато</option>
+                                    <option value="glass-type-sm">Серое в массе</option> 
+                                    <option value="glass-type-dav">Давальческое</option>
+                            </select> 
+                    </div>  
+            </div>
+            <div class="works-name">
+                Обработка
+            </div>
+            <div class="works-pick">
+                    <div class="pick-elem"> 
+                        <input type="checkbox" name="works-chbxs" id="works-pl-chbx" checked>
+                        <label for="works-pl-chbx"> Полировка <br> 
+                            <img class="inline-img pl" src="" alt="" width="50" height="50">
+                        </label> 
+                    </div> 
+                    <div class="pick-elem"> 
+                        <input type="checkbox" name="works-chbxs" id="works-sh-chbx" >
+                        <label for="works-sh-chbx"> Шлифовка <br> 
+                            <img class="inline-img sh" src="" alt="" width="50" height="50">
+                        </label> 
+                    </div> 
+                    <div class="pick-elem"> 
+                        <input type="checkbox" name="works-chbxs" id="works-fg-chbx" >
+                        <label for="works-fg-chbx"> Фигурная <br> 
+                            <img class="inline-img fg" src="" alt="" width="50" height="50">
+                        </label>  
+                    </div> 
+                    <div class="pick-elem"> 
+                        <input type="checkbox" name="works-chbxs" id="works-no-chbx" >
+                        <label for="works-no-chbx"> Без обработки <br>  
+                        </label>  
+                    </div> 
+            </div>
+            <div class="shape-name">
+                Форма
+            </div>
+            
+            <div class="shape-pick">
+                    <div class="pick-elem"> 
+                            <input type="checkbox" name="shape-chbxs" id="shape-1-chbx" >
+                            <label for="shape-1-chbx"> Стандарт <br> 
+                                <img class="inline-img pl" src="" alt="" width="50" height="50">
+                            </label> 
+                        </div> 
+                        <div class="pick-elem"> 
+                            <input type="checkbox" name="shape-chbxs" id="shape-2-chbx" >
+                            <label for="shape-2-chbx"> Прямой участок <br> 
+                                <img class="inline-img sh" src="" alt="" width="50" height="50">
+                            </label> 
+                        </div> 
+                        <div class="pick-elem"> 
+                            <input type="checkbox" name="shape-chbxs" id="shape-3-chbx" >
+                            <label for="shape-3-chbx"> Две плоскости <br> 
+                                <img class="inline-img fg" src="" alt="" width="50" height="50">
+                            </label>  
+                        </div> 
+                        <div class="pick-elem"> 
+                            <input type="checkbox" name="shape-chbxs" id="shape-4-chbx" checked>
+                            <label for="shape-4-chbx"> Сфера <br>  
+                                <img class="inline-img fg" src="" alt="" width="50" height="50">
+                            
+                            </label>  
+                        </div> 
+ 
+            </div> 
+            <div class="angles-name">
+                Раскрытие
+            </div>
+            <div class="angles-pick">
+                    <div class="pick-elem"> 
+                            <input type="checkbox" name="angles-chbxs" id="angles-1-chbx" checked>
+                            <label for="angles-1-chbx"> До 90° </label> 
+                    </div> 
+                    <div class="pick-elem"> 
+                            <input type="checkbox" name="angles-chbxs" id="angles-2-chbx" >
+                            <label for="angles-2-chbx"> До 120°  </label> 
+                    </div> 
+                    <div class="pick-elem"> 
+                            <input type="checkbox" name="angles-chbxs" id="angles-3-chbx" >
+                            <label for="angles-3-chbx"> 120-180°  </label> 
+                    </div> 
+                     
+            </div>
+            <div class="holes-name">
+                Отверстия, кол-во
+            </div>
+            <div class="holes-pick">
+                    <div class="pick-elem">  
+                        <span>4-15мм. :    </span>
+                        <input type="number" min="0" max="30"  pattern="[0-9]+" title="Только целые числа от 0 до 30" id="holes-s-amount-box" oninput="calculateGlassGoods()">          
+                    </div> 
+                    <div class="pick-elem">  
+                        <span>16-30мм. :    </span>
+                        <input type="number" min="0" max="30"  pattern="[0-9]+" title="Только целые числа от 0 до 30" id="holes-m-amount-box" oninput="calculateGlassGoods()">          
+                    </div> 
+                    <div class="pick-elem">  
+                        <span>От 30мм.:    </span>
+                        <input type="number" min="0" max="30"  pattern="[0-9]+" title="Только целые числа от 0 до 30" id="holes-l-amount-box" oninput="calculateGlassGoods()">          
+                    </div> 
+            </div>
+            <div class="connectors-name">
+                Петли/Коннекторы
+            </div> 
+            <div class="connectors-pick">
+                    <div class="pick-elem">  
+                        <span>Петли:    </span>
+                        <input type="number" min="0" max="10"  pattern="[0-9]+" title="Только целые числа от 0 до 10" id="connectors-p-amount" oninput="calculateGlassGoods()">          
+                    </div> 
+                    <div class="pick-elem">  
+                        <span>Коннекторы:    </span>
+                        <input type="number" min="0" max="10"  pattern="[0-9]+" title="Только целые числа от 0 до 10" id="connectors-c-amount" oninput="calculateGlassGoods()">          
+                    </div> 
+            </div> 
+ 
+            <div class="output-info" id="output-info">
+
+                <div class="alerts"> 
+                    <p id="alerts-angles"></p>
+                    <p id="alerts-works"></p>
+                </div>
+                
+
+                <div class="total">
+                    <span>Цена всего комплекта: </span>
+                    <p id="total-price"></p>
+                    <span>Цена одной штуки: </span>
+                    <p id="total-price-one-item"></p> 
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script>
+        resetAll();
+    </script>
+    <script>
+     
+
+        $('[name=works-chbxs]').on('change', function() { 
+            $('[name=works-chbxs]').not(this).prop('checked', false); 
+            calculateGlassGoods();  
+        });
+        $('[name=shape-chbxs]').on('change', function() { 
+            $('[name=shape-chbxs]').not(this).prop('checked', false);   
+            calculateGlassGoods();  
+        });
+        $('[name=angles-chbxs]').on('change', function() { 
+            $('[name=angles-chbxs]').not(this).prop('checked', false);  
+            calculateGlassGoods();   
+        });
+
+    </script>
+</body>
+</html>

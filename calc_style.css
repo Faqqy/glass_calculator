@@ -1,0 +1,130 @@
+/*
+.calc-nav {
+    
+    position: fixed;
+}
+*/
+.pick-elem {
+    margin: 10px 10px 10px 10px; 
+}
+
+.inline-img { 
+    background-repeat: repeat;   
+    margin-left: 25px;
+}
+
+
+
+.output-info {
+    margin: 10px 10px 10px 10px; 
+    overflow-y: scroll;
+}
+ 
+
+
+
+.calc-grid {
+    display: grid;
+    grid-template-columns: 100px 600px 350px;
+    grid-template-rows: 120px 120px 120px 120px 120px 120px 120px 120px  ;
+
+    grid-template-areas:
+        "base-info-name base-info-pick output-info"
+        "size-name size-pick output-info"
+        "thickness-name thickness-pick output-info"
+        "works-name works-pick output-info"
+        "shape-name shape-pick output-info"
+        "angles-name angles-pick output-info"
+        "holes-name holes-pick output-info"
+        "connectors-name connectors-pick output-info";
+
+    background-color: #000;
+    grid-gap: 1px;
+
+
+    margin: auto;
+    width: 700px;
+}
+
+.calc-grid > div {
+    background-color: #fff;
+}
+
+.base-info-name {
+    grid-area: base-info-name;
+}
+.base-info-pick {
+    grid-area: base-info-pick; 
+}
+.output-info  {
+    grid-area: output-info; 
+}  
+
+.size-name {
+    grid-area: size-name;
+}
+.size-pick {
+    grid-area: size-pick; 
+}
+.thickness-name {
+    grid-area: thickness-name;
+} 
+.thickness-pick {
+    grid-area: thickness-pick; 
+
+    
+    display: grid;
+    grid-template-columns: 1fr  1fr 1fr; 
+    grid-template-rows: 1fr  1fr; 
+}
+.works-name {
+    grid-area: works-name;
+}
+.works-pick {
+    grid-area: works-pick; 
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+}
+.works-pick  img.pl { 
+    background-image: url(./img/works_01.png); 
+}
+.works-pick  img.sh { 
+    background-image: url(./img/works_02.png); 
+}
+.works-pick  img.fg { 
+    background-image: url(./img/works_03.png); 
+}
+
+
+.shape-name {
+    grid-area: shape-name;
+}
+.shape-pick {
+    grid-area: shape-pick; 
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+}
+.angles-name {
+    grid-area: angles-name;
+}
+.angles-pick {
+    grid-area: angles-pick; 
+
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+}
+.holes-name {
+    grid-area: holes-name;
+}
+.holes-pick {
+    grid-area: holes-pick; 
+}
+.connectors-name {
+    grid-area: connectors-name;
+}
+.connectors-pick {
+    grid-area: connectors-pick; 
+} 
